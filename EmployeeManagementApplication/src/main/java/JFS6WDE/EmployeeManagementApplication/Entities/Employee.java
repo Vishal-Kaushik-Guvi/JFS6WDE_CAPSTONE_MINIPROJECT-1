@@ -18,11 +18,11 @@ public class Employee {
  private int id;
  
  @Column(name = "First_Name")
- private String fname;
+ private String firstName;
  
  @Column(name = "Last_Name")
- private String lname;
+ private String lastName;
  
  @Column(name = "Department")
- private String department;
+ private String departmentName;
 }

@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Employee Management Application</title>
     <link
-            rel="stylesheet"
-            href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-            integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
-            crossorigin="anonymous"
+        rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous"
     />
 </head>
 <body>
-<!--//Navbar boottstrap class -->
+<!-- Navbar bootstrap class -->
 <nav class="navbar navbar-dark bg-dark navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -25,40 +25,38 @@
 <br />
 <br />
 <div class="container">
-    <h1>Employee Management System</h1>
+    <h1>Employee Management Application</h1>
     <hr />
     <h2>Save Employee</h2>
 
     <form
-            action="#"
-            th:action="@{/saveEmployee}"
-            th:object="${employee}"
-            method="POST"
+        th:action="@{/saveEmployee}"
+        th:object="${employee}"
+        method="POST"
     >
         <input
-                type="text"
-                th:field="*{firstName}"
-                placeholder="Employee First Name"
-                class="form-control mb-4 col-4"
-
+            type="text"
+            th:field="*{firstName}"
+            placeholder="Employee First Name"
+            class="form-control mb-4 col-4"
         />
         <input
-                type="text"
-                th:field="*{lastName}"
-                placeholder="Employee Last Name"
-                class="form-control mb-4 col-4"
+            type="text"
+            th:field="*{lastName}"
+            placeholder="Employee Last Name"
+            class="form-control mb-4 col-4"
         />
         <input
-                type="text"
-                th:field="*{department}"
-                placeholder="Employee Department"
-                class="form-control mb-4 col-4"
+            type="text"
+            th:field="*{departmentName}"
+            placeholder="Employee Department"
+            class="form-control mb-4 col-4"
         />
         <button type="submit" class="btn btn-info col-4">Save Employee</button>
     </form>
     <hr />
-<!--    //go back to previous list on home page -->
-    <a th:href="@{/}">Back to Employee List</a>
+    <!-- Go back to previous list on home page -->
+    <a th:href="@{/index}">Back to Employee List</a>
 </div>
 </body>
 </html>

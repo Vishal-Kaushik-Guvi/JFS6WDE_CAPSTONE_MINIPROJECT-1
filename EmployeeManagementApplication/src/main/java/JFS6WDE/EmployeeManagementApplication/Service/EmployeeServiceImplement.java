@@ -47,9 +47,9 @@ public class EmployeeServiceImplement implements EmployeeService {
 			Employee empUpdate = optionalEmployee.get();
 
 			// Update the fields with the new values
-			empUpdate.setFname(emp.getFname());
-			empUpdate.setLname(emp.getLname());
-			empUpdate.setDepartment(emp.getDepartment());
+			empUpdate.setFirstName(emp.getFirstName());
+			empUpdate.setLastName(emp.getLastName());
+			empUpdate.setDepartmentName(emp.getDepartmentName());
 
 			// Save the updated employee back to the database
 			return empRepo.save(empUpdate);
