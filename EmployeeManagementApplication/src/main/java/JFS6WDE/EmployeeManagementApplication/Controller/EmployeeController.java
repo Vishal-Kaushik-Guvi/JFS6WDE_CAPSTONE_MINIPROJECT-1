@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +30,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/addEmployee")
-    public String showNewEmployeeForm(Model model) {
+    public String addEmployee(Model model) {
         Employee employee = new Employee();
         model.addAttribute("employee", employee);
         return "addemployee";
@@ -41,16 +42,39 @@ public class EmployeeController {
         return "redirect:/index";
     }
 
-    @GetMapping("/deleteEmployee")
+    @GetMapping("/viewEmployee")
+    public String viewEmployee(@RequestParam("id") int id, Model model) {
+        Employee employee = employeeService.getEmployeeById(id);
+        model.addAttribute("employee", employee);
+        return "viewemployee";
+    }
+
+    @DeleteMapping("/deleteEmployee")
     public String deleteEmployee(@RequestParam("id") int id) {
         employeeService.deleteEmployeeById(id);
         return "redirect:/index";
     }
 
+    @PutMapping("/updateEmployee")
+    public ResponseEntity<Employee> updateEmployee(
+            @RequestParam("id") int id,
+            @RequestParam("firstName") String firstName,
+            @RequestParam("lastName") String lastName,
+            @RequestParam("departmentName") String departmentName) {
+        Employee employeeDetails = new Employee();
+        employeeDetails.setId(id);
+        employeeDetails.setFirstName(firstName);
+        employeeDetails.setLastName(lastName);
+        employeeDetails.setDepartmentName(departmentName);
+
+        Employee updatedEmployee = employeeService.updateEmployee(employeeDetails);
+        return ResponseEntity.ok(updatedEmployee);
+    }
+
     @GetMapping("/page/{pageNo}")
     public String findPaginated(@PathVariable(value = "pageNo") int pageNo,
-                                @RequestParam("sortField") String sortField,
-                                @RequestParam("sortDir") String sortDir, Model model) {
+            @RequestParam("sortField") String sortField,
+            @RequestParam("sortDir") String sortDir, Model model) {
         int pageSize = 5;
 
         Page<Employee> page = employeeService.findPaginated(pageNo, pageSize, sortField, sortDir);

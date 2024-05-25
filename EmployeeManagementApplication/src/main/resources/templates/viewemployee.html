@@ -1,10 +1,79 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Specific Employee Data</title>
+    <meta charset="UTF-8">
+    <title>Employee Details</title>
+    <link rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css}">
+    <style>
+        .container {
+            margin-top: 50px;
+            max-width: 600px;
+        }
+        .card {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            border-radius: 10px;
+            overflow: hidden;
+            border: none;
+        }
+        .card-header {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+        .card-body {
+            padding: 30px;
+        }
+        .field {
+            margin-bottom: 20px;
+        }
+        .field-label {
+            font-weight: bold;
+            color: #343a40;
+            margin-bottom: 5px;
+        }
+        .field-value {
+            font-size: 1.2em;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            border: 1px solid #e9ecef;
+        }
+        .btn-back {
+            margin-top: 20px;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
-
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="mb-0">Employee Details</h2>
+            </div>
+            <div class="card-body">
+                <div class="field">
+                    <div class="field-label">ID</div>
+                    <div class="field-value" th:text="${employee.id}">-id-</div>
+                </div>
+                <div class="field">
+                    <div class="field-label">First Name</div>
+                    <div class="field-value" th:text="${employee.firstName}">-first name-</div>
+                </div>
+                <div class="field">
+                    <div class="field-label">Last Name</div>
+                    <div class="field-value" th:text="${employee.lastName}">-last name-</div>
+                </div>
+                <div class="field">
+                    <div class="field-label">Department</div>
+                    <div class="field-value" th:text="${employee.departmentName}">-department-</div>
+                </div>
+                <a href="/" class="btn btn-primary btn-back">Back to List</a>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
 </html>
