@@ -11,52 +11,96 @@
         integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
         crossorigin="anonymous"
     />
+    <style>
+        body {
+            background-color: #a3c664;
+            padding-top: 56px; /* Adjust for fixed navbar */
+        }
+        .navbar-brand h1 {
+            margin-bottom: 10px;
+            margin-top: 10px;
+           
+            margin-left: 250px;
+        }
+        .form-container {
+            background-color: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: black;
+        }
+        .btn-custom {
+            background-color: #343a40;
+            color: white;
+        }
+
+        .btn-secondary{
+            background-color: #343a40;
+        }
+
+        .btn-secondary text{
+            background-color: white;
+        }
+
+        .btn-custom-white {
+           color: white !important;
+       }
+
+        .form-container{
+            margin-top: 100px;
+        }
+    </style>
 </head>
 <body>
-<!-- Navbar bootstrap class -->
-<nav class="navbar navbar-dark bg-dark navbar-fixed-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-        <div class="navbar-header">
-            <h1 style="color: white">Employee</h1>
-        </div>
+        <a class="navbar-brand" href="#">
+            <h1>Employee Management Application</h1>
+        </a>
     </div>
 </nav>
 
-<br />
-<br />
-<div class="container">
-    <h1>Employee Management Application</h1>
-    <hr />
-    <h2>Save Employee</h2>
-
-    <form
-        th:action="@{/saveEmployee}"
-        th:object="${employee}"
-        method="POST"
-    >
-        <input
-            type="text"
-            th:field="*{firstName}"
-            placeholder="Employee First Name"
-            class="form-control mb-4 col-4"
-        />
-        <input
-            type="text"
-            th:field="*{lastName}"
-            placeholder="Employee Last Name"
-            class="form-control mb-4 col-4"
-        />
-        <input
-            type="text"
-            th:field="*{departmentName}"
-            placeholder="Employee Department"
-            class="form-control mb-4 col-4"
-        />
-        <button type="submit" class="btn btn-info col-4">Save Employee</button>
-    </form>
-    <hr />
-    <!-- Go back to previous list on home page -->
-    <a th:href="@{/index}">Back to Employee List</a>
+<div class="container mt-5">
+    <div class="form-container">
+        <h2 class="mb-4">Save your Employee details below!!</h2>
+        <form
+            th:action="@{/saveEmployee}"
+            th:object="${employee}"
+            method="POST"
+        >
+            <div class="form-group">
+                <input
+                    type="text"
+                    th:field="*{firstName}"
+                    placeholder="Employee First Name"
+                    class="form-control"
+                />
+            </div>
+            <div class="form-group">
+                <input
+                    type="text"
+                    th:field="*{lastName}"
+                    placeholder="Employee Last Name"
+                    class="form-control"
+                />
+            </div>
+            <div class="form-group">
+                <input
+                    type="text"
+                    th:field="*{departmentName}"
+                    placeholder="Employee Department"
+                    class="form-control"
+                />
+            </div>
+            <button type="submit" class="btn btn-custom btn-block">Save Employee</button>
+        </form>
+    </div>
+    <div class="text-center mt-4">
+        <a th:href="@{/index}" class="btn btn-secondary btn-custom-white">Back to Employee List</a>
+    </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa4fZLqB4QhrmJJcFq7sx4i4i" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+whm3ij+J8a2bkIKa1JAY/6b1HOVRtrE9rC1RiTfOH8TftCz5f3l8b5T" crossorigin="anonymous"></script>
 </body>
 </html>

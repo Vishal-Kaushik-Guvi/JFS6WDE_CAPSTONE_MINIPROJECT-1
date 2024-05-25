@@ -90,4 +90,11 @@ public class EmployeeController {
 
         return "index";
     }
+
+    @GetMapping("/allEmployee")
+    public String getAllEmployee(Model model){
+        List<Employee> listemp = employeeService.getAllEmployee();
+        model.addAttribute("listemp", listemp);
+        return "index";
+    }
 }

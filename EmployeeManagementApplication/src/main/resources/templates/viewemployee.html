@@ -5,44 +5,69 @@
     <title>Employee Details</title>
     <link rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css}">
     <style>
-        .container {
-            margin-top: 50px;
-            max-width: 600px;
+        /* Center the content vertically and horizontally */
+        html, body {
+            height: 100%;
         }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #a3c664; /* Optional background color */
+            overflow: hidden;
+        }
+        /* Card and content styles */
         .card {
+            background-color: white;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
             border-radius: 10px;
             overflow: hidden;
             border: none;
+            width: 700px;
+            height: 650px;
         }
         .card-header {
             background-color: #343a40;
             color: white;
             text-align: center;
-            padding: 15px;
+            padding: 20px;
         }
         .card-body {
-            padding: 30px;
+            padding: 40px;
         }
         .field {
             margin-bottom: 20px;
         }
         .field-label {
             font-weight: bold;
-            color: #343a40;
-            margin-bottom: 5px;
+            color: black;
+            margin-bottom: 10px;
         }
         .field-value {
             font-size: 1.2em;
-            padding: 10px;
+            padding: 15px;
             background-color: #f8f9fa;
             border-radius: 5px;
             border: 1px solid #e9ecef;
         }
-        .btn-back {
+        
+        .back-btn {
+            text-align: center;
             margin-top: 20px;
-            width: 100%;
         }
+        .back-btn-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #343a40;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .back-btn-link:hover {
+            background-color: lightcoral;
+        }
+
     </style>
 </head>
 <body>
@@ -67,9 +92,10 @@
                 <div class="field">
                     <div class="field-label">Department</div>
                     <div class="field-value" th:text="${employee.departmentName}">-department-</div>
-                </div>
-                <a href="/" class="btn btn-primary btn-back">Back to List</a>
-            </div>
+
+                    <div class="back-btn">
+                        <a th:href="@{/index}" class="back-btn-link">Back to Employee List</a>
+                    </div>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
