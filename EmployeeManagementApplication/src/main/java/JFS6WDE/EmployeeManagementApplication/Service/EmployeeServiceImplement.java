@@ -21,8 +21,8 @@ public class EmployeeServiceImplement implements EmployeeService {
 
 	// method to create employee
 	@Override
-	public void createEmployee(Employee emp) {
-		empRepo.save(emp);
+	public Employee createEmployee(Employee emp) {
+		return empRepo.save(emp);
 	}
 
 	// method to get all Employees
