@@ -13,41 +13,55 @@
     />
     <style>
         body {
-            background-color: #a3c664;
+            background: linear-gradient(135deg, #a3c664, #6ba34b);
             padding-top: 56px; /* Adjust for fixed navbar */
+            overflow: hidden;
         }
         .navbar-brand h1 {
             margin-bottom: 10px;
             margin-top: 10px;
-           
             margin-left: 250px;
         }
         .form-container {
             background-color: #f8f9fa;
             padding: 30px;
             border-radius: 10px;
-            box-shadow: black;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            max-width: 600px;
+            margin: 100px auto; /* Centers the form horizontally */
+        }
+        .form-container:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.35);
         }
         .btn-custom {
             background-color: #343a40;
             color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
         }
-
-        .btn-secondary{
+        .btn-custom:hover {
+            background-color: #4e555b;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        .btn-secondary {
             background-color: #343a40;
         }
-
-        .btn-secondary text{
+        .btn-secondary.text {
             background-color: white;
         }
-
         .btn-custom-white {
-           color: white !important;
-       }
-
-        .form-container{
-            margin-top: 100px;
+            color: white !important;
         }
+        .form-control {
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+        }
+        .form-control:focus {
+            box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+       
     </style>
 </head>
 <body>
@@ -59,14 +73,10 @@
     </div>
 </nav>
 
-<div class="container mt-5">
+<div class="container">
     <div class="form-container">
         <h2 class="mb-4">Save your Employee details below!!</h2>
-        <form
-            th:action="@{/saveEmployee}"
-            th:object="${employee}"
-            method="POST"
-        >
+        <form th:action="@{/saveEmployee}" th:object="${employee}" method="POST">
             <div class="form-group">
                 <input
                     type="text"
@@ -95,7 +105,7 @@
         </form>
     </div>
     <div class="text-center mt-4">
-        <a th:href="@{/index}" class="btn btn-secondary btn-custom-white">Back to Employee List</a>
+        <a th:href="@{/}" class="btn btn-secondary btn-custom-white">Back to Employee List</a>
     </div>
 </div>
 

@@ -9,11 +9,11 @@ import JFS6WDE.EmployeeManagementApplication.Entities.Employee;
 public interface EmployeeService {
 	    List<Employee> getAllEmployee();
 	  
-	    Employee createEmployee(Employee employee);
+	    Employee saveEmployee(Employee employee);
 
-	    Employee getEmployeeById(int id);
+	    Employee getEmployeeById(long id);
 
-	    void deleteEmployeeById(int id);
+	    void deleteEmployeeById(long id);
 	    
 	    Employee updateEmployee(Employee emp);
 

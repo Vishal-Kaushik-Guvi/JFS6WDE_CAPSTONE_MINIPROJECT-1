@@ -21,7 +21,7 @@ public class EmployeeServiceImplement implements EmployeeService {
 
 	// method to create employee
 	@Override
-	public Employee createEmployee(Employee emp) {
+	public Employee saveEmployee(Employee emp) {
 		return empRepo.save(emp);
 	}
 
@@ -33,7 +33,7 @@ public class EmployeeServiceImplement implements EmployeeService {
 
 	// method to get employee by id
 	@Override
-	public Employee getEmployeeById(int id) {
+	public Employee getEmployeeById(long id) {
 		return empRepo.findById(id).get();
 	}
 
@@ -61,7 +61,7 @@ public class EmployeeServiceImplement implements EmployeeService {
 
 	// method to delete Employee
 	@Override
-	public void deleteEmployeeById(int id) {
+	public void deleteEmployeeById(long id) {
 		empRepo.deleteById(id);
 	}
 

@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import JFS6WDE.EmployeeManagementApplication.Entities.Employee;
 
 @EnableJpaRepositories
-public interface EmployeeRepository extends JpaRepository<Employee, Integer>{
+public interface EmployeeRepository extends JpaRepository<Employee, Long>{
 
 }
