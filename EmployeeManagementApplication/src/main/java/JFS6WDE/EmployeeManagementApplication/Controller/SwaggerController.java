@@ -48,7 +48,7 @@ public class SwaggerController {
     }
 
     @PutMapping("/updateEmployee")
-    public Employee updateEmployee(@RequestParam("id") int id, 
+    public Employee updateEmployee(long id, 
                                  @RequestParam("firstName") String firstName, 
                                  @RequestParam("lastName") String lastName, 
                                  @RequestParam("departmentName") String departmentName) {
@@ -64,7 +64,7 @@ public class SwaggerController {
     }
     
     @DeleteMapping("/deleteEmployee/{id}")
-    public void deleteEmployeeData(@PathVariable int id) {
+    public void deleteEmployeeData(@PathVariable long id) {
         empService.deleteEmployeeById(id);
     }
 }
