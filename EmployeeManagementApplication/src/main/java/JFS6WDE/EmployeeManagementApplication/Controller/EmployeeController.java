@@ -31,7 +31,7 @@ public class EmployeeController {
     public String addEmployee(Model model) {
         Employee employee = new Employee();
         model.addAttribute("employee", employee);
-        return "addEmployee";
+        return "addemployee";
     }
 
     @PostMapping("/saveEmployee")
@@ -44,21 +44,19 @@ public class EmployeeController {
     public String viewEmployee(@RequestParam long id, Model model) {
         Employee employee = employeeService.getEmployeeById(id);
         model.addAttribute("employee", employee);
-        return "viewEmployee";
+        return "viewemployee";
+    }
+
+    @GetMapping("/updateEmployee")
+    public String showUpdateEmployeeForm(@RequestParam long id, Model model) {
+        Employee employee = employeeService.getEmployeeById(id);
+        model.addAttribute("employee", employee);
+        return "updateemployee";
     }
 
     @PostMapping("/updateEmployee")
-    public String updateEmployee(@RequestParam("id") int id,
-            @RequestParam("firstName") String firstName,
-            @RequestParam("lastName") String lastName,
-            @RequestParam("departmentName") String departmentName) {
-        Employee employee = employeeService.getEmployeeById(id);
-        if (employee != null) {
-            employee.setFirstName(firstName);
-            employee.setLastName(lastName);
-            employee.setDepartmentName(departmentName);
-            employeeService.updateEmployee(employee);
-        }
+    public String updateEmployee(@ModelAttribute("employee") Employee employee) {
+        employeeService.updateEmployee(employee);
         return "redirect:/";
     }
 
@@ -70,9 +68,9 @@ public class EmployeeController {
 
     @GetMapping("/page/{pageNo}")
     public String findPaginated(@PathVariable(value = "pageNo") int pageNo,
-            @RequestParam("sortField") String sortField,
-            @RequestParam("sortDir") String sortDir,
-            Model model) {
+                                @RequestParam("sortField") String sortField,
+                                @RequestParam("sortDir") String sortDir,
+                                Model model) {
         int pageSize = 5;
         Page<Employee> page = employeeService.findPaginated(pageNo, pageSize, sortField, sortDir);
         List<Employee> listEmployees = page.getContent();

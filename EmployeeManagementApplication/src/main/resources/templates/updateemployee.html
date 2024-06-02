@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Employee</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+        body {
+            padding-top: 70px; /* Adjust for fixed navbar */
+            background-color: #a3c664;
+        }
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+        }
+        .navbar-brand h1 {
+            margin-left: 230px;
+            margin-bottom: 10px;
+            margin-top: 10px;
+            font-size: 2.5rem;
+            color: #ffffff;
+        }
+        .navbar-dark {
+            background-color: #343a40;
+        }
+        .form-container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+        .form-container:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            transform: translateY(-5px);
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+            border: none;
+            box-shadow: 0 4px 8px rgba(108, 117, 125, 0.3);
+        }
+        .btn-secondary:hover {
+            background-color: #5a636b;
+        }
+    </style>
+</head>
+<body>
+<!-- Header part -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <h1>Employee Management Application</h1>
+        </a>
+    </div>
+</nav>
+
+<!-- Update Employee Form -->
+<div class="container my-5">
+    <div class="text-center">
+        <h1>Update Employee</h1>
+    </div>
+    <div class="form-container">
+        <form th:action="@{/updateEmployee}" th:object="${employee}" method="post">
+            <input type="hidden" th:field="*{id}" />
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" class="form-control" id="firstName" name="firstName" th:field="*{firstName}" required>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" class="form-control" id="lastName" name="lastName" th:field="*{lastName}" required>
+            </div>
+            <div class="form-group">
+                <label for="departmentName">Department</label>
+                <input type="text" class="form-control" id="departmentName" name="departmentName" th:field="*{departmentName}" required>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Update</button>
+                <a th:href="@{/}" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+        integrity="sha384-wHAi8ZH4CfwC/7e3gO6dYN2YcAksWzk1bwQ3g7buCNYoAn6WLGjCwECwHGsIQ2Il"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+ni8XKzOZbKI2F3k6G8zKR49S8Ff4VVzq+zQZ6p3zgzR0PBpC7rP47kC" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -41,18 +41,17 @@ public class EmployeeServiceImplement implements EmployeeService {
 	@Override
 	public Employee updateEmployee(Employee emp) {
 		// Fetch the existing employee from the database
-		Optional<Employee> optionalEmployee = empRepo.findById(emp.getId());
-
-		if (optionalEmployee.isPresent()) {
-			Employee empUpdate = optionalEmployee.get();
-
+		Optional<Employee> existingEmployeeOpt = empRepo.findById(emp.getId());
+	
+		if (existingEmployeeOpt.isPresent()) {
+			Employee existingEmployee = existingEmployeeOpt.get();
 			// Update the fields with the new values
-			empUpdate.setFirstName(emp.getFirstName());
-			empUpdate.setLastName(emp.getLastName());
-			empUpdate.setDepartmentName(emp.getDepartmentName());
-
+			existingEmployee.setFirstName(emp.getFirstName());
+			existingEmployee.setLastName(emp.getLastName());
+			existingEmployee.setDepartmentName(emp.getDepartmentName());
+			
 			// Save the updated employee back to the database
-			return empRepo.save(empUpdate);
+			return empRepo.save(existingEmployee);
 		} else {
 			// Handle the case when the employee is not found
 			throw new RuntimeException("Employee not found with id: " + emp.getId());

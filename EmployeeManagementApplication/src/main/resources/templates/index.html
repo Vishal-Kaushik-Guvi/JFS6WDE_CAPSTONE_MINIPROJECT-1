@@ -75,14 +75,6 @@
         .page-link:hover {
             background-color: #f8f9fa;
         }
-        .popover-header {
-            background-color: #343a40;
-            color: #ffffff;
-            font-weight: bold;
-        }
-        .popover-body {
-            background-color: #f8f9fa;
-        }
     </style>
 </head>
 <body>
@@ -130,15 +122,9 @@
                 <td th:text="${employee.departmentName}"></td>
                 <td>
                     <a th:href="@{/viewEmployee(id=${employee.id})}" class="btn btn-primary btn-sm">View</a>
-
-                    <button class="btn btn-primary btn-sm" data-toggle="popover" data-trigger="focus" title="Update Employee" 
-                        data-content="First Name: ${employee.firstName}<br>Last Name: ${employee.lastName}<br>Department: ${employee.departmentName}">
-                        Update
-                    </button>
-                    
+                    <a th:href="@{/updateEmployee(id=${employee.id})}" class="btn btn-primary btn-sm">Update</a>
                     <form th:action="@{/deleteEmployee}" method="post" style="display:inline;">
                         <input type="hidden" name="id" th:value="${employee.id}"/>
-                        <input type="hidden" name="_method" value="delete"/>
                         <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                     </form>
                 </td>
@@ -166,23 +152,12 @@
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
-integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
         integrity="sha384-wHAi8ZH4CfwC/7e3gO6dYN2YcAksWzk1bwQ3g7buCNYoAn6WLGjCwECwHGsIQ2Il"
         crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
         integrity="sha384-B0UglyR+ni8XKzOZbKI2F3k6G8zKR49S8Ff4VVzq+zQZ6p3zgzR0PBpC7rP47kC" crossorigin="anonymous"></script>
-<script>
-    $(function () {
-        $('[data-toggle="popover"]').popover({
-            html: true,
-            sanitize: false,
-            content: function () {
-                return $(this).next('.popover-content').html();
-            },
-        });
-    });
-</script>
 </body>
 </html>

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -46,8 +47,8 @@ public class SwaggerController {
         return empService.getAllEmployee();
     }
 
-    @PostMapping("/updateEmployee")
-    public String updateEmployee(@RequestParam("id") int id, 
+    @PutMapping("/updateEmployee")
+    public Employee updateEmployee(@RequestParam("id") int id, 
                                  @RequestParam("firstName") String firstName, 
                                  @RequestParam("lastName") String lastName, 
                                  @RequestParam("departmentName") String departmentName) {
@@ -58,7 +59,7 @@ public class SwaggerController {
             employee.setDepartmentName(departmentName);
             empService.updateEmployee(employee);
         }
-        return "redirect:/";
+        return empService.saveEmployee(employee);
 
     }
     
